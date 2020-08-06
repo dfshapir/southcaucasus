@@ -7,12 +7,40 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+options(scipen = 999)
 library(tidyverse)
 library(readr)
 library(readxl)
 ```
 
+# Turnover
+
 ```{r}
 turnover <- read_xlsx("raw-data/Trade Turnover.xlsx")
+```
+
+```{r}
+ggplot(turnover, aes(x = Year, y = `Imports + Exports (Thousands USD)`, color = Country)) +
+  geom_line() +
+  labs(title = "Total Trade with China (Imports + Exports), 2005-2018",
+       subtitle = "Data from World Bank")
+
+ggsave("turnover.png")
+```
+
+# Total investment
+
+```{r}
+inflow <- read_xlsx("raw-data/Total Inflow.xlsx")
+```
+
+```{r}
+ggplot(inflow, aes(x = Year, y = Amount, color = Country)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Total FDI Inflow, 2013-2019",
+       subtitle = "Data from UNCTAD",
+       caption = "Data can be found at https://unctad.org/en/PublicationsLibrary/wir2019_en.pdf.",
+       y = "Amount in Millions USD")
 ```
 
