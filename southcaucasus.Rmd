@@ -44,3 +44,32 @@ ggplot(inflow, aes(x = Year, y = Amount, color = Country)) +
        y = "Amount in Millions USD")
 ```
 
+# Chinese FDI Position
+
+```{r}
+chnpos <- read_xlsx("raw-data/china.xlsx")
+chnpos <- chnpos[-24, ]
+```
+
+```{r}
+ggplot(chnpos, aes(x = Year, y = Amount, color = Country)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Chinese FDI Position in South Caucasus countries",
+       subtitle = "Data from IMF",
+       y = "Amount in Millions USD",
+       caption = "Data can be found at https://data.imf.org/regular.aspx?key=61227424.")
+```
+
+# Georgia FDI Inflow
+
+```{r}
+georgia <- read_xlsx("raw-data/georgia.xlsx")
+```
+
+```{r}
+ggplot(georgia, aes(x = Year, y = Amount)) +
+  geom_line() +
+  geom_point()
+```
+
