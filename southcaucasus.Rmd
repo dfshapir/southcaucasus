@@ -17,10 +17,12 @@ library(readxl)
 
 ```{r}
 turnover <- read_xlsx("raw-data/Trade Turnover.xlsx")
+turnover <- turnover %>%
+  mutate(`Imports + Exports (Millions USD)` = (`Imports + Exports (Millions USD)`)/1000)
 ```
 
 ```{r}
-ggplot(turnover, aes(x = Year, y = `Imports + Exports (Thousands USD)`, color = Country)) +
+ggplot(turnover, aes(x = Year, y = `Imports + Exports (Millions USD)`, color = Country)) +
   geom_line() +
   labs(title = "Total Trade with China (Imports + Exports), 2005-2018",
        subtitle = "Data from World Bank")
@@ -59,6 +61,7 @@ ggplot(chnpos, aes(x = Year, y = Amount, color = Country)) +
        subtitle = "Data from IMF",
        y = "Amount in Millions USD",
        caption = "Data can be found at https://data.imf.org/regular.aspx?key=61227424.")
+ggsave("fdistock.png")
 ```
 
 # Georgia FDI Inflow
