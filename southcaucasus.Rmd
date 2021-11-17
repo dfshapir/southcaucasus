@@ -24,7 +24,7 @@ turnover <- turnover %>%
 ```{r}
 ggplot(turnover, aes(x = Year, y = `Imports + Exports (Millions USD)`, color = Country)) +
   geom_line() +
-  labs(title = "Total Trade with China (Imports + Exports), 2005-2018",
+  labs(title = "Total Trade with China (Imports + Exports), 2005-2019",
        subtitle = "Data from World Bank")
 
 ggsave("turnover.png")
