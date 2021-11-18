@@ -54,7 +54,7 @@ chnpos <- chnpos[-24, ]
 ```
 
 ```{r}
-ggplot(chnpos, aes(x = Year, y = Amount, color = Country)) +
+ggplot(chnpos[!is.na(chnpos$Amount),], aes(x = Year, y = Amount, color = Country)) +
   geom_point() +
   geom_line() +
   labs(title = "Chinese FDI Position in South Caucasus countries",
