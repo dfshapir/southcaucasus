@@ -60,7 +60,8 @@ ggplot(chnpos[!is.na(chnpos$Amount),], aes(x = Year, y = Amount, color = Country
   labs(title = "Chinese FDI Position in South Caucasus countries",
        subtitle = "Data from IMF",
        y = "Amount in Millions USD",
-       caption = "Data can be found at https://data.imf.org/regular.aspx?key=61227424.")
+       caption = "Data can be found at https://data.imf.org/regular.aspx?key=61227424.") +
+  scale_x_continuous(breaks = seq(2009,2019,2))
 ggsave("fdistock.png")
 ```
 
